@@ -11,19 +11,17 @@ const HomeRoute = (props) => {
     
     const toggleFavorited = (photoId) => {
       const index = isFavorited.indexOf(photoId)
-      
-      if (index === -1) {
-        setFavouritePhotos((previousState) => {
-          return [...previousState, photoId]
-        });
-      }
 
-      if (index > -1) {
-        setFavouritePhotos((previousState) => {
+      index === -1 && setFavouritePhotos((previousState) => {
+        return [...previousState, photoId]
+      });
+      
+      index > -1 && setFavouritePhotos((previousState) => {
           return previousState.filter(photo => photo !== photoId)
         });
-      }
-    };
+    }
+
+    
 
 
 
