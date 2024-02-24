@@ -58,11 +58,11 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const {photos} = props;
-
+  const {photos, useFavToggle} = props;
+  
   // imageSource, profile, username, location
   const photoItems = photos.map((photo) => {
-    return <PhotoListItem key={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
+    return <PhotoListItem useFavToggle={useFavToggle} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
   })
 
   return (

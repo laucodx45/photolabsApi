@@ -1,17 +1,39 @@
 import React from 'react';
-
+import { useState } from 'react';
 import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = (props) => {
+   
+  const useFavToggle = () => {
+    const [isFavorited, setFavouritePhotos] = useState([]);
+    
+    const toggleFavorited = (photoId) => {
+      const index = isFavorited.indexOf(photoId)
+      
+      if (index === -1) {
+        setFavouritePhotos((previousState) => {
+          return [...previousState, photoId]
+        });
+      }
+
+      if (index > -1) {
+        setFavouritePhotos((previousState) => {
+          return previousState.filter(photo => photo !== photoId)
+        });
+      }
+    };
+
+    return {isFavorited, toggleFavorited};
+  }
 
   const { photos, topics } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics}/>
-      <PhotoList photos={photos}/>
+      <TopNavigation topics={topics} />
+      <PhotoList photos={photos} useFavToggle={useFavToggle} />
     </div>
   );
 };
