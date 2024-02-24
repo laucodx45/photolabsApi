@@ -5,13 +5,15 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
-  const {topics , favPhotos} = props;
-  
+  const {topics , isFavorited} = props;
+
+  const isFavPhotoExist = isFavorited.length !== 0 ? isFavorited : false;
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList topics={topics} />
-      <FavBadge />
+      <FavBadge isFavPhotoExist={isFavPhotoExist}/>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = (props) => {
    
-  const useFavToggle = () => {
+
     const [isFavorited, setFavouritePhotos] = useState([]);
     
     const toggleFavorited = (photoId) => {
@@ -25,15 +25,14 @@ const HomeRoute = (props) => {
       }
     };
 
-    return {isFavorited, toggleFavorited};
-  }
+
 
   const { photos, topics } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} />
-      <PhotoList photos={photos} useFavToggle={useFavToggle} />
+      <TopNavigation topics={topics} isFavorited={isFavorited} />
+      <PhotoList photos={photos} toggleFavorited={toggleFavorited} isFavorited={isFavorited} />
     </div>
   );
 };
