@@ -58,12 +58,12 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const {photos, toggleFavorited, isFavorited} = props;
+  const {photos, toggleFavorited, isFavorited, toggleModal} = props;
   
 
   // imageSource, profile, username, location
   const photoItems = photos.map((photo) => {
-    return <PhotoListItem toggleFavorited={toggleFavorited} isFavorited={isFavorited} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
+    return <PhotoListItem toggleFavorited={toggleFavorited} isFavorited={isFavorited} toggleModal={toggleModal} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
   })
 
   return (
