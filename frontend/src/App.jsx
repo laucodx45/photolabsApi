@@ -31,10 +31,10 @@ const App = () => {
 
   
 
-  const [isFavourite, setFavouritePhotos] = useState([]);
+  const [favouritePhotos, setFavouritePhotos] = useState([]);
   
   const toggleFavourite = (photoId) => {
-    const index = isFavourite.indexOf(photoId)
+    const index = favouritePhotos.indexOf(photoId)
 
     index === -1 && setFavouritePhotos((previousState) => {
       return [...previousState, photoId]
@@ -47,7 +47,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} modalState={modalState} toggleModal={toggleModal} isFavourite={isFavourite} toggleFavourite={toggleFavourite} />
+      <HomeRoute photos={photos} topics={topics} modalState={modalState} toggleModal={toggleModal} favouritePhotos={favouritePhotos} toggleFavourite={toggleFavourite} />
     </div>
   );
 };
