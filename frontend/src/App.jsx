@@ -14,19 +14,19 @@ const App = () => {
       case 'updateStateAndImg' : 
         return { 
           state : !modalState.state,
-          imageSoruce : action.payload
+          photoInfo : action.payload
         }
       case 'updateState' :
         return { 
           state : !modalState.state,
-          imageSoruce : null
+          photoInfo : null
         }
     }
   }
 
   const [modalState, toggleModal] = useReducer(modalOnClick, {
     state: false,
-    imageSoruce: null
+    photoInfo: null
   })
 
   return (

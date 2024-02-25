@@ -31,7 +31,7 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigation topics={topics} isFavorited={isFavorited} />
       <PhotoList photos={photos} toggleFavorited={toggleFavorited} toggleModal={toggleModal} isFavorited={isFavorited} />
-      {modalState.state && <PhotoDetailsModal modalState={modalState} toggleModal={toggleModal} />}
+      {modalState.state && <PhotoDetailsModal modalState={modalState} toggleFavorited={toggleFavorited} isFavorited={isFavorited} toggleModal={toggleModal} />}
     </div>
   );
 };
