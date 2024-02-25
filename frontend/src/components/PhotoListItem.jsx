@@ -4,12 +4,12 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
 
-  const {imageSource, profile, username, location, toggleFavorited, isFavorited, photoId, toggleModal, similarPhotos} = props;
+  const {imageSource, profile, username, location, toggleFavourite, isFavourite, photoId, toggleModal, similarPhotos} = props;
   
   return (
 
       <div className="photo-list__item">
-        <PhotoFavButton  toggleFavorited={toggleFavorited} isFavorited={isFavorited} photoId={photoId} />
+        <PhotoFavButton  toggleFavourite={toggleFavourite} isFavourite={isFavourite} photoId={photoId} />
         <img src={imageSource} alt="picture" className="photo-list__image" onClick={ 
           () => {
             toggleModal({type: 'updateStateAndImg', payload: {imageSource, profile, location, username, photoId, similarPhotos}})

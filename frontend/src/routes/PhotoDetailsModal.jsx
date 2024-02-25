@@ -6,7 +6,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { toggleModal, modalState, toggleFavorited, isFavorited } = props;
+  const { toggleModal, modalState, toggleFavourite, isFavourite } = props;
   const { imageSource, profile, location, username, photoId, similarPhotos } = modalState.photoInfo;
 
   return (
@@ -19,8 +19,8 @@ const PhotoDetailsModal = (props) => {
       </button>
 
       <div className="photo-details-modal__images">
-        <PhotoFavButton toggleFavorited={toggleFavorited} isFavorited={isFavorited} photoId={photoId}/>
-        <img className="photo-details-modal__image" src={imageSource} />
+        <PhotoFavButton toggleFavourite={toggleFavourite} isFavourite={isFavourite} photoId={photoId}/>
+        <img className="photo-details-modal__image" src={imageSource} alt='selected image' />
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={profile} alt="profile picture" />
           <div className='photo-details-modal__photographer-info'>
@@ -32,7 +32,7 @@ const PhotoDetailsModal = (props) => {
         </div>
         <p className='photo-details-modal__header'>Similar Photos</p>
         <div className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos} toggleFavorited={toggleFavorited} toggleModal={toggleModal} isFavorited={isFavorited}/>
+          <PhotoList photos={similarPhotos} toggleFavourite={toggleFavourite} toggleModal={toggleModal} isFavourite={isFavourite}/>
         </div>
       </div>
     </div>

@@ -5,9 +5,9 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
-  const {topics , isFavorited} = props;
+  const {topics , isFavourite} = props;
 
-  const isFavPhotoExist = isFavorited.length !== 0 ? isFavorited : false;
+  const isFavPhotoExist = isFavourite.length !== 0 ? isFavourite : false;
 
   return (
     <div className="top-nav-bar">

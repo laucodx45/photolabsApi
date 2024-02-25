@@ -9,10 +9,10 @@ const HomeRoute = (props) => {
 
   const { modalState, toggleModal } = props;
 
-  const [isFavorited, setFavouritePhotos] = useState([]);
+  const [isFavourite, setFavouritePhotos] = useState([]);
   
-  const toggleFavorited = (photoId) => {
-    const index = isFavorited.indexOf(photoId)
+  const toggleFavourite = (photoId) => {
+    const index = isFavourite.indexOf(photoId)
 
     index === -1 && setFavouritePhotos((previousState) => {
       return [...previousState, photoId]
@@ -29,9 +29,9 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavorited={isFavorited} />
-      <PhotoList photos={photos} toggleFavorited={toggleFavorited} toggleModal={toggleModal} isFavorited={isFavorited} />
-      {modalState.state && <PhotoDetailsModal modalState={modalState} toggleFavorited={toggleFavorited} isFavorited={isFavorited} toggleModal={toggleModal} />}
+      <TopNavigation topics={topics} isFavourite={isFavourite} />
+      <PhotoList photos={photos} toggleFavourite={toggleFavourite} toggleModal={toggleModal} isFavourite={isFavourite} />
+      {modalState.state && <PhotoDetailsModal modalState={modalState} toggleFavourite={toggleFavourite} isFavourite={isFavourite} toggleModal={toggleModal} />}
     </div>
   );
 };
