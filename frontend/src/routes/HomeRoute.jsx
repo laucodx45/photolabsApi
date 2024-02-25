@@ -6,26 +6,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const HomeRoute = (props) => {
-
-  const { modalState, toggleModal } = props;
-
-  const [isFavourite, setFavouritePhotos] = useState([]);
-  
-  const toggleFavourite = (photoId) => {
-    const index = isFavourite.indexOf(photoId)
-
-    index === -1 && setFavouritePhotos((previousState) => {
-      return [...previousState, photoId]
-    });
-
-    index > -1 && setFavouritePhotos((previousState) => {
-        return previousState.filter(photo => photo !== photoId)
-      });
-  }
-
-    
-
-  const { photos, topics } = props;
+  const { photos, topics, modalState, toggleModal, isFavourite, toggleFavourite } = props;
 
   return (
     <div className="home-route">

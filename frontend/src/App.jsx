@@ -29,9 +29,25 @@ const App = () => {
     photoInfo: null
   })
 
+  
+
+  const [isFavourite, setFavouritePhotos] = useState([]);
+  
+  const toggleFavourite = (photoId) => {
+    const index = isFavourite.indexOf(photoId)
+
+    index === -1 && setFavouritePhotos((previousState) => {
+      return [...previousState, photoId]
+    });
+
+    index > -1 && setFavouritePhotos((previousState) => {
+        return previousState.filter(photo => photo !== photoId)
+      });
+  }
+
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} modalState={modalState} toggleModal={toggleModal} />
+      <HomeRoute photos={photos} topics={topics} modalState={modalState} toggleModal={toggleModal} isFavourite={isFavourite} toggleFavourite={toggleFavourite} />
     </div>
   );
 };
