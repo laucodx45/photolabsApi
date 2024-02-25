@@ -10,7 +10,8 @@ const PhotoListItem = (props) => {
 
       <div className="photo-list__item">
         <PhotoFavButton  toggleFavorited={toggleFavorited} isFavorited={isFavorited} photoId={photoId} />
-        <img src={imageSource} alt="picture" className="photo-list__image" onClick={toggleModal}/>
+        <img src={imageSource} alt="picture" className="photo-list__image" onClick={() => {
+          toggleModal({type: 'updateStateAndImg', payload: imageSource})}} />
         <div className="photo-list__user-details">
           <img src={profile} alt="profile picture" className="photo-list__user-profile" />
           <div className="photo-list__user-info">

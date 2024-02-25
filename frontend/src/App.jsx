@@ -10,10 +10,24 @@ import topics from 'mocks/topics';
 const App = () => {
 
   const modalOnClick = (modalState, action) => {
-    return !modalState;
+    switch(action.type) {
+      case 'updateStateAndImg' : 
+        return { 
+          state : !modalState.state,
+          imageSoruce : action.payload
+        }
+      case 'updateState' :
+        return { 
+          state : !modalState.state,
+          imageSoruce : null
+        }
+    }
   }
 
-  const [modalState, toggleModal] = useReducer(modalOnClick, false)
+  const [modalState, toggleModal] = useReducer(modalOnClick, {
+    state: false,
+    imageSoruce: null
+  })
 
   return (
     <div className="App">
