@@ -11,16 +11,14 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
   const {
     state,
-    setPhotoSelected,
-    updateToFavPhotoIds,
-    onClosePhotoDetailsModal
+    dispatch
   } = useApplicationData();
 
-  const { favouritePhotos, modalState } = state;
+  // const { favouritePhotos, modalState } = state;
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} modalState={modalState} setPhotoSelected={setPhotoSelected} favouritePhotos={favouritePhotos} updateToFavPhotoIds={updateToFavPhotoIds} onClosePhotoDetailsModal={onClosePhotoDetailsModal} />
+      <HomeRoute photos={photos} topics={topics} dispatch={dispatch} state={state} />
     </div>
   );
 };

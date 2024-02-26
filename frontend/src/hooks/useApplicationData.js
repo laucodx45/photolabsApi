@@ -1,48 +1,53 @@
 import { useReducer } from "react";
+export const ACTIONS = {
+  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
+  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SELECT_PHOTO: 'SELECT_PHOTO',
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  CLOSE_MODAL: 'CLOSE_MODAL'
+}
+
+const initialState = {
+  favouritePhotos : [],
+  photoInfo : null,
+  modalState : null
+}
 
 const useApplicationData = () => {
-  const modalOnClick = (modalState, action) => {
+
+  const reducer = (state, action) => {
     switch(action.type) {
-      case 'updateStateAndImg' : 
-        return { 
-          ...modalState,
-          state : !modalState.state,
+      case ACTIONS.FAV_PHOTO_ADDED: 
+        return {
+          ...state, favouritePhotos: [...state.favouritePhotos, action.payload]
+        }
+      case ACTIONS.FAV_PHOTO_REMOVED:
+        return {
+          ...state, favouritePhotos: [...state.favouritePhotos.filter(photo => photo !== action.payload)]
+        }
+      case ACTIONS.SELECT_PHOTO: 
+        return {
+          ...state, 
+          modalState : true,
           photoInfo : action.payload
         }
-      case 'updateState' :
-        return { 
-          ...modalState,
-          state : !modalState.state,
+      case ACTIONS.CLOSE_MODAL:
+        return {
+          ...state,
+          modalState : false,
           photoInfo : null
         }
-      default :
-        return modalState;
+      default:
+        throw new Error (`Tried to reduce with unsupported action type: ${action.type}`);
     }
-  }
-  
-  const [modalState, setPhotoSelected] = useReducer(modalOnClick, {
-    state: false,
-    photoInfo: null
-  })
-  
-  const onClosePhotoDetailsModal = () => {
-    setPhotoSelected({type: 'updateState'})
+
   }
 
-  const favoritePhotosReducer = (favouritePhotos, action) => {
-    const photoId = action.payload;
-    const hasPhotoId = favouritePhotos.includes(photoId)
-    
-    return !hasPhotoId
-      ? [...favouritePhotos, photoId]
-      : [...favouritePhotos].filter(photo => photo !== photoId);
-  } 
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [favouritePhotos, updateToFavPhotoIds] = useReducer(favoritePhotosReducer, []);
-
-  const state = {modalState, favouritePhotos};
-
-  return { state, setPhotoSelected, updateToFavPhotoIds, onClosePhotoDetailsModal };
+  return { state, dispatch };
 }
 
 export default useApplicationData

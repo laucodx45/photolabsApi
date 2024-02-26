@@ -6,18 +6,21 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { setPhotoSelected, modalState, updateToFavPhotoIds, favouritePhotos, onClosePhotoDetailsModal } = props;
-  const { imageSource, profile, location, username, photoId, similarPhotos } = modalState.photoInfo;
+  // const { setPhotoSelected, modalState, updateToFavPhotoIds, favouritePhotos, onClosePhotoDetailsModal } = props;
+  // const { imageSource, profile, location, username, photoId, similarPhotos } = modalState.photoInfo;
+
+  const { state, dispatch } = props;
+  const {modalState, photoInfo, favouritePhotos } = state;
+  const {imageSource, profile, location, username, photoId, similarPhotos} = photoInfo;
 
   return (
     <div className="photo-details-modal">
 
-      <button className="photo-details-modal__close-button" onClick={onClosePhotoDetailsModal}>
+      <button className="photo-details-modal__close-button" onClick={() => {dispatch({ type: 'CLOSE_MODAL'})}}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
-
       <div className="photo-details-modal__images">
-        <PhotoFavButton updateToFavPhotoIds={updateToFavPhotoIds} favouritePhotos={favouritePhotos} photoId={photoId}/>
+        <PhotoFavButton dispatch={dispatch} favouritePhotos={favouritePhotos} photoId={photoId}/>
         <img className="photo-details-modal__image" src={imageSource} alt='selected image' />
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={profile} alt="profile picture" />
@@ -30,7 +33,7 @@ const PhotoDetailsModal = (props) => {
         </div>
         <p className='photo-details-modal__header'>Similar Photos</p>
         <div className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos} updateToFavPhotoIds={updateToFavPhotoIds} setPhotoSelected={setPhotoSelected} favouritePhotos={favouritePhotos}/>
+          <PhotoList photos={similarPhotos} dispatch={dispatch} favouritePhotos={favouritePhotos} />
         </div>
       </div>
     </div>
