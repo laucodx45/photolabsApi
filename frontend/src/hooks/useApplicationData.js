@@ -42,9 +42,9 @@ const useApplicationData = () => {
   
   // updateToFavPhotoIds
   const updateToFavPhotoIds = (photoId) => {
-    const index = favouritePhotos.indexOf(photoId)
+    const hasPhotoId = favouritePhotos.includes(photoId)
     
-    index === -1 
+    !hasPhotoId
       ? setFavouritePhotos((previousState) => [...previousState, photoId]) 
       : setFavouritePhotos((previousState) => previousState.filter(photo => photo !== photoId));
   }
