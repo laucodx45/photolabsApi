@@ -1,11 +1,4 @@
-import { useState, useReducer } from "react";
-
-/*
-The state object will contain the entire state of the application.
-The updateToFavPhotoIds action can be used to set the favourite photos
-The setPhotoSelected action can be used when the user selects a photo.
-The onClosePhotoDetailsModal action can be used to close the modal.
- */
+import { useReducer } from "react";
 
 const useApplicationData = () => {
   const modalOnClick = (modalState, action) => {
@@ -27,7 +20,6 @@ const useApplicationData = () => {
     }
   }
   
-  // setPhotoSelected, setPhotoSelected
   const [modalState, setPhotoSelected] = useReducer(modalOnClick, {
     state: false,
     photoInfo: null
@@ -36,18 +28,17 @@ const useApplicationData = () => {
   const onClosePhotoDetailsModal = () => {
     setPhotoSelected({type: 'updateState'})
   }
-  
-  
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
-  
-  // updateToFavPhotoIds
-  const updateToFavPhotoIds = (photoId) => {
+
+  const favoritePhotosReducer = (favouritePhotos, action) => {
+    const photoId = action.payload;
     const hasPhotoId = favouritePhotos.includes(photoId)
     
-    !hasPhotoId
-      ? setFavouritePhotos((previousState) => [...previousState, photoId]) 
-      : setFavouritePhotos((previousState) => previousState.filter(photo => photo !== photoId));
-  }
+    return !hasPhotoId
+      ? [...favouritePhotos, photoId]
+      : [...favouritePhotos].filter(photo => photo !== photoId);
+  } 
+
+  const [favouritePhotos, updateToFavPhotoIds] = useReducer(favoritePhotosReducer, []);
 
   const state = {modalState, favouritePhotos};
 

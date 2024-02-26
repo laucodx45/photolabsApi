@@ -7,7 +7,7 @@ function PhotoFavButton(props) {
 
   const isSelected = favouritePhotos.includes(photoId) ? true : false;
   return (
-    <div className="photo-list__fav-icon" onClick={() => { updateToFavPhotoIds(photoId)}}>
+    <div className="photo-list__fav-icon" onClick={() => { updateToFavPhotoIds({ payload: photoId})}}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={isSelected}/>
       </div>
