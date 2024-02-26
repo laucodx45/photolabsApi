@@ -58,7 +58,7 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const {photos, toggleFavourite, favouritePhotos, toggleModal} = props;
+  const {photos, updateToFavPhotoIds, favouritePhotos, setPhotoSelected} = props;
 
   let photosData = []
   if (Array.isArray(photos)) {
@@ -68,7 +68,7 @@ const PhotoList = (props) => {
   }
   // imageSource, profile, username, location
   const photoItems = photosData.map((photo) => {
-    return <PhotoListItem similarPhotos ={photo.similar_photos} toggleFavourite={toggleFavourite} favouritePhotos={favouritePhotos} toggleModal={toggleModal} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
+    return <PhotoListItem similarPhotos ={photo.similar_photos} updateToFavPhotoIds={updateToFavPhotoIds} favouritePhotos={favouritePhotos} setPhotoSelected={setPhotoSelected} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
   })
 
   return (

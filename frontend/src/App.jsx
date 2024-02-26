@@ -4,50 +4,23 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
+import useApplicationData from 'hooks/useApplicationData';
 // Note: Rendering a single component to build components in isolation
 
 
 const App = () => {
+  const {
+    state,
+    setPhotoSelected,
+    updateToFavPhotoIds,
+    onClosePhotoDetailsModal
+  } = useApplicationData();
 
-  const modalOnClick = (modalState, action) => {
-    switch(action.type) {
-      case 'updateStateAndImg' : 
-        return { 
-          state : !modalState.state,
-          photoInfo : action.payload
-        }
-      case 'updateState' :
-        return { 
-          state : !modalState.state,
-          photoInfo : null
-        }
-    }
-  }
-
-  const [modalState, toggleModal] = useReducer(modalOnClick, {
-    state: false,
-    photoInfo: null
-  })
-
-  
-
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
-  
-  const toggleFavourite = (photoId) => {
-    const index = favouritePhotos.indexOf(photoId)
-
-    index === -1 && setFavouritePhotos((previousState) => {
-      return [...previousState, photoId]
-    });
-
-    index > -1 && setFavouritePhotos((previousState) => {
-        return previousState.filter(photo => photo !== photoId)
-      });
-  }
+  const { favouritePhotos, modalState } = state;
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} modalState={modalState} toggleModal={toggleModal} favouritePhotos={favouritePhotos} toggleFavourite={toggleFavourite} />
+      <HomeRoute photos={photos} topics={topics} modalState={modalState} setPhotoSelected={setPhotoSelected} favouritePhotos={favouritePhotos} updateToFavPhotoIds={updateToFavPhotoIds} onClosePhotoDetailsModal={onClosePhotoDetailsModal} />
     </div>
   );
 };
