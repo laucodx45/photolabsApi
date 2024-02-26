@@ -12,11 +12,13 @@ const useApplicationData = () => {
     switch(action.type) {
       case 'updateStateAndImg' : 
         return { 
+          ...modalState,
           state : !modalState.state,
           photoInfo : action.payload
         }
       case 'updateState' :
         return { 
+          ...modalState,
           state : !modalState.state,
           photoInfo : null
         }
@@ -41,14 +43,10 @@ const useApplicationData = () => {
   // updateToFavPhotoIds
   const updateToFavPhotoIds = (photoId) => {
     const index = favouritePhotos.indexOf(photoId)
-  
-    index === -1 && setFavouritePhotos((previousState) => {
-      return [...previousState, photoId]
-    });
-  
-    index > -1 && setFavouritePhotos((previousState) => {
-        return previousState.filter(photo => photo !== photoId)
-      });
+    
+    index === -1 
+      ? setFavouritePhotos((previousState) => [...previousState, photoId]) 
+      : setFavouritePhotos((previousState) => previousState.filter(photo => photo !== photoId));
   }
 
   const state = {modalState, favouritePhotos};
