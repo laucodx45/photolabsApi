@@ -1,5 +1,3 @@
-import topics from "mocks/topics"
-import photos from "mocks/photos"
 import { useState, useReducer } from "react";
 
 /*
@@ -22,6 +20,8 @@ const useApplicationData = () => {
           state : !modalState.state,
           photoInfo : null
         }
+      default :
+        return modalState;
     }
   }
   
