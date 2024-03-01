@@ -1,4 +1,6 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
+import axios from "axios";
+
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
@@ -12,7 +14,9 @@ export const ACTIONS = {
 const initialState = {
   favouritePhotos : [],
   photoInfo : null,
-  modalState : null
+  modalState : null,
+  photoData: [],
+  topicData: []
 }
 
 const useApplicationData = () => {
@@ -39,6 +43,16 @@ const useApplicationData = () => {
           modalState : false,
           photoInfo : null
         }
+      case ACTIONS.SET_PHOTO_DATA:
+        return {
+          ...state,
+          photoData: action.payload
+        }
+      case ACTIONS.SET_TOPIC_DATA:
+        return {
+          ...state,
+          topicData: action.payload
+        }
       default:
         throw new Error (`Tried to reduce with unsupported action type: ${action.type}`);
     }
@@ -46,6 +60,25 @@ const useApplicationData = () => {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    axios.get('http://localhost:8001/api/photos')
+      .then(res => dispatch({ type: 'SET_PHOTO_DATA', payload: res.data }))
+      .catch(err => console.log(`Error: ${err}`))
+
+    axios.get('http://localhost:8001/api/topics')
+      .then(res => dispatch({ type: 'SET_TOPIC_DATA', payload: res.data }))
+  }, []);
+
+  /**
+   * 
+   * @param {string} type includes FAV_PHOTO_ADDED, FAV_PHOTO_REMOVED, SELECT_PHOTO, CLOSE_MODAL
+   * @param {*} payload photoId, photoInfo {imageSource, profile, location, username, photoId, similarPhotos}
+   * @returns 
+   */
+  // const dispatch = (type, payload) => {
+  //   return dispatchTest({ type: type, payload: payload });
+  // }
 
   return { state, dispatch };
 }
