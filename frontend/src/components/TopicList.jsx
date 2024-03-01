@@ -22,10 +22,10 @@ const sampleDataForTopicList = [
 
 const TopicList = (props) => {
 
-  const { topics } = props;
+  const { topics, dispatch } = props;
 
   const allTopics = topics.map((topic) => {
-    return <TopicListItem key={topic.id} label={topic.title}/>
+    return <TopicListItem key={topic.id} id={topic.id} label={topic.title} dispatch={dispatch} />
   })
 
   return (

@@ -10,9 +10,9 @@ const sampleDataForTopicListItem = {
 
 const TopicListItem = (props) => {
 
-  const { label } = props;
+  const { label, dispatch, id } = props;
   return (
-    <div className="topic-list__item">
+    <div className="topic-list__item" onClick={() => dispatch({type: 'SELECT_TOPIC', payload: id })}>
       {label}
     </div>
   );

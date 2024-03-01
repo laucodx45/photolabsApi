@@ -8,6 +8,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  SELECT_TOPIC: 'SELECT_TOPIC',
   CLOSE_MODAL: 'CLOSE_MODAL'
 }
 
@@ -16,7 +17,8 @@ const initialState = {
   photoInfo : null,
   modalState : null,
   photoData: [],
-  topicData: []
+  topicData: [],
+  topicId: null
 }
 
 const useApplicationData = () => {
@@ -53,6 +55,11 @@ const useApplicationData = () => {
           ...state,
           topicData: action.payload
         }
+      case ACTIONS.SELECT_TOPIC:
+        return {
+          ...state,
+          topicId: action.payload
+        }
       default:
         throw new Error (`Tried to reduce with unsupported action type: ${action.type}`);
     }
@@ -70,6 +77,19 @@ const useApplicationData = () => {
       .then(res => dispatch({ type: 'SET_TOPIC_DATA', payload: res.data }))
   }, []);
 
+  useEffect(() => {
+    if (state.topicId !== null) {
+      axios.get(`http://localhost:8001/api/topics/photos/${state.topicId}`)
+        .then(res => dispatch( {type: 'SET_PHOTO_DATA', payload: res.data}))
+        .catch(err => console.log(`Error: ${err}`))
+
+    } else {
+      axios.get('http://localhost:8001/api/photos')
+      .then(res => dispatch({ type: 'SET_PHOTO_DATA', payload: res.data }))
+      .catch(err => console.log(`Error: ${err}`))
+    }
+  }, [state.topicId])
+  // http://localhost:8001/api/topics/photos/:topic_id
   /**
    * 
    * @param {string} type includes FAV_PHOTO_ADDED, FAV_PHOTO_REMOVED, SELECT_PHOTO, CLOSE_MODAL
