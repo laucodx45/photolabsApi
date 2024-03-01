@@ -2,18 +2,16 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
-const sampleDataForTopicListItem = {
-  id: "1",
-  slug: "topic-1",
-  label: "Nature",
-};
-
 const TopicListItem = (props) => {
 
-  const { label, dispatch, id } = props;
+  const { label, dispatch, id, state } = props;
+
   return (
     <div className="topic-list__item" onClick={() => dispatch({type: 'SELECT_TOPIC', payload: id })}>
-      {label}
+      { state.topicId !== id && label}
+      <div className="selected-item">
+        { state.topicId === id && label }
+      </div>
     </div>
   );
 };

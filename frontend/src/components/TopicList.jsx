@@ -1,31 +1,13 @@
 import React from "react";
-
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
-const sampleDataForTopicList = [
-  {
-    id: "1",
-    slug: "topic-1",
-    title: "Nature",
-  },
-  {
-    id: "2",
-    slug: "topic-2",
-    title: "Travel",
-  },
-  {
-    id: "3",
-    slug: "topic-3",
-    title: "People",
-  },
-];
 
 const TopicList = (props) => {
 
-  const { topics, dispatch } = props;
+  const { topics, dispatch, state } = props;
 
   const allTopics = topics.map((topic) => {
-    return <TopicListItem key={topic.id} id={topic.id} label={topic.title} dispatch={dispatch} />
+    return <TopicListItem key={topic.id} id={topic.id} label={topic.title} dispatch={dispatch} state={state} />
   })
 
   return (

@@ -88,16 +88,6 @@ const useApplicationData = () => {
       .catch(err => console.log(`Error: ${err}`))
     }
   }, [state.topicId])
-  // http://localhost:8001/api/topics/photos/:topic_id
-  /**
-   * 
-   * @param {string} type includes FAV_PHOTO_ADDED, FAV_PHOTO_REMOVED, SELECT_PHOTO, CLOSE_MODAL
-   * @param {*} payload photoId, photoInfo {imageSource, profile, location, username, photoId, similarPhotos}
-   * @returns 
-   */
-  // const dispatch = (type, payload) => {
-  //   return dispatchTest({ type: type, payload: payload });
-  // }
 
   return { state, dispatch };
 }
