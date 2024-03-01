@@ -4,9 +4,9 @@ React Photo Viewer is a single-page application that allows users to view photos
 
 ## Screenshots
 
-![Screenshot of homepage](/frontend/public/homePage.png)
-![Screenshot of the modal view](/frontend/public//Modal.png)
-![Screenshot of the photos group by categories](/frontend/public//photoFilter.png)
+![Screenshot of homepage](https://github.com/laucodx45/photolabs/raw/main/frontend/public/homePage.png)
+![Screenshot of the modal view](https://github.com/laucodx45/photolabs/raw/main/frontend/public/Modal.png)
+![Screenshot of the photos group by categories](https://github.com/laucodx45/photolabs/raw/main/frontend/public/photoFilter.png)
 
 ## Features
 
