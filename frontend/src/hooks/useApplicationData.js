@@ -8,7 +8,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   SELECT_TOPIC: 'SELECT_TOPIC',
-  CLOSE_MODAL: 'CLOSE_MODAL'
+  CLOSE_MODAL: 'CLOSE_MODAL',
+  SET_DARKMODE: 'SET_DARKMODE'
 }
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
   modalState : false,
   photoData: [],
   topicData: [],
-  topicId: null
+  topicId: null,
+  darkMode: false
 }
 
 const useApplicationData = () => {
@@ -61,6 +63,12 @@ const useApplicationData = () => {
           ...state,
           topicId: action.payload
         }
+      case ACTIONS.SET_DARKMODE:
+        return {
+          ...state,
+          darkMode: !state.darkMode
+        }
+      
       default:
         throw new Error (`Tried to reduce with unsupported action type: ${action.type}`);
     }

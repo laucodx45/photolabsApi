@@ -5,9 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--app-background-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --app-background-color: white;
+  --header-background: #282c34;
+  --app-link-color: #61dafb;
+  --photo-details-modal-color: white;
+  --photo-details-modal__header-color: #1e1e1e;
+  --location-color: #838383;
+  --photo-list__item-color: lightgray;
+  --topic-list__item-color: #2b2b2b;
+  --topic-list_item-hover-color: #111;
+  --shadow: #222;
+  --logo-color: #111;
+  --font-color: black;
+  --fav-button-color: #fffffffc;
+}
+
+[data-theme="dark"] {
+  --app-background-color: black;
+  --header-background: #1e1e1e;
+  --app-link-color: #61dafb;
+  --photo-details-modal-color: #1e1e1e;
+  --photo-details-modal__header-color: white;
+  --location-color: #bebcbc;
+  --photo-list__item-color: darkgray;
+  --topic-list__item-color: white;
+  --topic-list_item-hover-color: #bdbdbd;
+  --shadow: #dbdada;
+  --logo-color: #fff;
+  --font-color: white;
+  --fav-button-color: #161616fc;
 }

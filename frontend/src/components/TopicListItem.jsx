@@ -7,7 +7,7 @@ const TopicListItem = (props) => {
 
   return (
     <div className="topic-list__item" onClick={() => dispatch({type: 'SELECT_TOPIC', payload: id })}>
-      {state.topicId !== id && label}
+      {state.topicId !== id && <span>{label}</span>}
       <div className="selected-item">
         {state.topicId === id && label}
       </div>

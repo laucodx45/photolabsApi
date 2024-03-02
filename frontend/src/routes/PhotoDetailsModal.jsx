@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
+import closeSymbolDark from '../assets/closeSymbolDark.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
@@ -13,7 +14,8 @@ const PhotoDetailsModal = (props) => {
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => {dispatch({ type: 'CLOSE_MODAL'})}}>
-        <img src={closeSymbol} alt="close symbol" />
+        {!state.darkMode && <img src={closeSymbol} alt="close symbol" />}
+        {!!state.darkMode && <img src={closeSymbolDark} alt="close symbol" />}
       </button>
       <div className="photo-details-modal__images">
         <PhotoFavButton dispatch={dispatch} favouritePhotos={favouritePhotos} photoId={photoId}/>

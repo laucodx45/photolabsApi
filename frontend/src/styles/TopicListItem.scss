@@ -8,15 +8,17 @@
   font-size: 18px;
   text-decoration: none;
   font-weight: 500;
-  color: #2b2b2b;
+  color: var(--topic-list__item-color);
 
   &:hover {
     text-decoration: overline;
-    color: #111;
+    color: var(--topic-list_item-hover-color);
   }
 }
 
 .selected-item {
   font-weight: 800;
-  text-decoration: underline;
+  text-decoration: overline;
+  color: var(--topic-list__item-color);
+  font-size: 18px;
 }

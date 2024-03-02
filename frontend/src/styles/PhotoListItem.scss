@@ -2,7 +2,7 @@
   margin: 24px;
   padding: 8px;
   border-width: 0.5px;
-  border-color: lightgray;
+  border-color: var(--photo-list__item-color);
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
@@ -41,8 +41,9 @@
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+  color: var(--font-color);
 }
 
 .photo-list__user-location {
-  color: #838383;
+  color: var(--location-color);
 }
