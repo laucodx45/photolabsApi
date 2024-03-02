@@ -26,11 +26,13 @@ const useApplicationData = () => {
     switch(action.type) {
       case ACTIONS.FAV_PHOTO_ADDED: 
         return {
-          ...state, favouritePhotos: [...state.favouritePhotos, action.payload]
+          ...state, 
+          favouritePhotos: [...state.favouritePhotos, action.payload]
         }
       case ACTIONS.FAV_PHOTO_REMOVED:
         return {
-          ...state, favouritePhotos: [...state.favouritePhotos.filter(photo => photo !== action.payload)]
+          ...state, 
+          favouritePhotos: [...state.favouritePhotos.filter(photo => photo !== action.payload)]
         }
       case ACTIONS.SELECT_PHOTO: 
         return {
@@ -74,6 +76,7 @@ const useApplicationData = () => {
 
     axios.get('http://localhost:8001/api/topics')
       .then(res => dispatch({ type: 'SET_TOPIC_DATA', payload: res.data }))
+      .catch(err => console.log(`Error: ${err}`))
   }, []);
 
   useEffect(() => {
@@ -89,7 +92,7 @@ const useApplicationData = () => {
     }
   }, [state.topicId])
 
-  return { state, dispatch };
+  return {state, dispatch};
 }
 
 export default useApplicationData

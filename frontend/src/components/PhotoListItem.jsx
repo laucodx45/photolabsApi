@@ -1,19 +1,19 @@
 import React from "react";
-import "../styles/PhotoListItem.scss";
-import PhotoFavButton from "./PhotoFavButton";
-const PhotoListItem = (props) => {
 
-  const { imageSource, profile, username, location, favouritePhotos, photoId, dispatch, similarPhotos } = props;
+import PhotoFavButton from "./PhotoFavButton";
+import "../styles/PhotoListItem.scss";
+
+const PhotoListItem = (props) => {
+  const {imageSource, profile, username, location, favouritePhotos, photoId, dispatch, similarPhotos} = props;
   
   const selectPhotoAction = () => {
-    dispatch({type: 'SELECT_PHOTO', payload: { imageSource, profile, location, username, photoId, similarPhotos }})
+    dispatch({type: 'SELECT_PHOTO', payload: {imageSource, profile, location, username, photoId, similarPhotos}});
   }
 
   return (
-
       <div className="photo-list__item">
         <PhotoFavButton  dispatch={dispatch} favouritePhotos={favouritePhotos} photoId={photoId} />
-        <img src={imageSource} alt="picture" className="photo-list__image" onClick={ () => { selectPhotoAction()}}/>
+        <img src={imageSource} alt="picture" className="photo-list__image" onClick={ () => {selectPhotoAction()}}/>
         <div className="photo-list__user-details">
           <img src={profile} alt="profile picture" className="photo-list__user-profile" />
           <div className="photo-list__user-info">
@@ -24,9 +24,7 @@ const PhotoListItem = (props) => {
           </div>
         </div>
       </div>
-
   )
-  
 };
 
 export default PhotoListItem;

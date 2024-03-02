@@ -7,9 +7,8 @@ function PhotoFavButton(props) {
 
   const isSelected = favouritePhotos.includes(photoId) ? true : false;
 
-
   return (
-    <div className="photo-list__fav-icon" onClick={() => { helperFn(isSelected, dispatch, photoId)}} >
+    <div className="photo-list__fav-icon" onClick={() => {handleFavToggle(isSelected, dispatch, photoId)}} >
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={isSelected}/>
       </div>
@@ -17,9 +16,9 @@ function PhotoFavButton(props) {
   );
 }
 
-function helperFn (isSelected, dispatch, photoId) {
+function handleFavToggle (isSelected, dispatch, photoId) {
   return !isSelected 
-    ? dispatch({ type: 'FAV_PHOTO_ADDED', payload: photoId }) 
+    ? dispatch({type: 'FAV_PHOTO_ADDED', payload: photoId}) 
     : dispatch({type: 'FAV_PHOTO_REMOVED', payload: photoId})
 }
 

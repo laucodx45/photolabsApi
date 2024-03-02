@@ -6,16 +6,12 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  // const { setPhotoSelected, modalState, updateToFavPhotoIds, favouritePhotos, onClosePhotoDetailsModal } = props;
-  // const { imageSource, profile, location, username, photoId, similarPhotos } = modalState.photoInfo;
-
   const { state, dispatch } = props;
-  const {modalState, photoInfo, favouritePhotos } = state;
-  const {imageSource, profile, location, username, photoId, similarPhotos} = photoInfo;
+  const { photoInfo, favouritePhotos } = state;
+  const { imageSource, profile, location, username, photoId, similarPhotos } = photoInfo;
 
   return (
     <div className="photo-details-modal">
-
       <button className="photo-details-modal__close-button" onClick={() => {dispatch({ type: 'CLOSE_MODAL'})}}>
         <img src={closeSymbol} alt="close symbol" />
       </button>

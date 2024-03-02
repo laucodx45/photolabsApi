@@ -1,8 +1,9 @@
 import React from 'react';
-import '../styles/HomeRoute.scss';
+
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
+import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
   const { photos, topics, dispatch, state } = props;
