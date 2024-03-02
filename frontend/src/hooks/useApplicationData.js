@@ -14,7 +14,7 @@ export const ACTIONS = {
 const initialState = {
   favouritePhotos : [],
   photoInfo : null,
-  modalState : null,
+  modalState : false,
   photoData: [],
   topicData: [],
   topicId: null

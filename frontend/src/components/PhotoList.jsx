@@ -4,7 +4,7 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  const {photos, favouritePhotos, dispatch} = props;
+  const {photos, favouritePhotos, dispatch, state} = props;
 
   // if photoData is not an array
   // user is in modal view, render similar photos
@@ -16,7 +16,7 @@ const PhotoList = (props) => {
   }
 
   const photoItems = photosData.map((photo) => {
-    return <PhotoListItem similarPhotos ={photo.similar_photos} dispatch={dispatch} favouritePhotos={favouritePhotos} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
+    return <PhotoListItem similarPhotos ={photo.similar_photos} state={state} dispatch={dispatch} favouritePhotos={favouritePhotos} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
   })
 
   return (

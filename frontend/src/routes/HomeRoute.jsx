@@ -11,7 +11,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation topics={topics} favouritePhotos={state.favouritePhotos} dispatch={dispatch} state={state} />
-      <PhotoList photos={photos} dispatch={dispatch} favouritePhotos={state.favouritePhotos} />
+      <PhotoList photos={photos} dispatch={dispatch} favouritePhotos={state.favouritePhotos} state={state} />
       {state.modalState && <PhotoDetailsModal state={state} dispatch={dispatch} />}
     </div>
   );
