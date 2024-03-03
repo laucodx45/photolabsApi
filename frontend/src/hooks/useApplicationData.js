@@ -9,7 +9,8 @@ export const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   SELECT_TOPIC: 'SELECT_TOPIC',
   CLOSE_MODAL: 'CLOSE_MODAL',
-  SET_DARKMODE: 'SET_DARKMODE'
+  SET_DARKMODE: 'SET_DARKMODE',
+  SET_SEARCH_INPUT: 'SET_SEARCH_INPUT'
 }
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
   photoData: [],
   topicData: [],
   topicId: null,
-  darkMode: false
+  darkMode: false,
+  searchInput: ''
 }
 
 const useApplicationData = () => {
@@ -67,6 +69,11 @@ const useApplicationData = () => {
         return {
           ...state,
           darkMode: !state.darkMode
+        }
+      case ACTIONS.SET_SEARCH_INPUT:
+        return {
+          ...state,
+          searchInput: action.payload
         }
       
       default:

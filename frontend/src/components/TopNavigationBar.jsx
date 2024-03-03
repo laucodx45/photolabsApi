@@ -5,6 +5,7 @@ import FavBadge from 'components/FavBadge';
 import '../styles/TopNavigationBar.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import SearchBar from './SearchBar';
 
 const TopNavigation = (props) => {
   const {topics , favouritePhotos, dispatch, state} = props;
@@ -19,6 +20,7 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar__logo" onClick={ () => dispatch({type: 'SELECT_TOPIC', payload: null})}>PhotoLabs</span>
       <TopicList topics={topics} dispatch={dispatch} state={state} />
       <FontAwesomeIcon className="moon" icon={faMoon} onClick={() => {toogleDarkMode()}}/>
+      {/* <SearchBar dispatch={dispatch} state={state} /> */}
       <FavBadge isFavPhotoExist={isFavPhotoExist}/>
     </div>
   )
