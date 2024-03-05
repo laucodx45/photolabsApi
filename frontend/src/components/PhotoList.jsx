@@ -8,14 +8,14 @@ const PhotoList = (props) => {
 
   let photosData = [];
 
-  const photoMap = {};
+  const photoMap = new Map();
 
   photos.forEach(photo => {
-    photoMap[photo.id] = photo;
+    photoMap.set(photo.id, photo);
   })
 
   similarPhotosId ? similarPhotosId.forEach(id => {
-    if (photoMap[id]) photosData.push(photoMap[id])
+    if (photoMap.has(id)) photosData.push(photoMap.get(id))
   }) : photosData = [...photos]
 
   
