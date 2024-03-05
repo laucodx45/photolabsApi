@@ -85,13 +85,15 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    axios.get('http://localhost:8001/api/photos')
-      .then(res => dispatch({ type: 'SET_PHOTO_DATA', payload: res.data }))
-      .catch(err => console.log(`Error: ${err}`))
+    const getPhotos = axios.get('http://localhost:8001/api/photos');
+    const getTopics = axios.get('http://localhost:8001/api/topics');
 
-    axios.get('http://localhost:8001/api/topics')
-      .then(res => dispatch({ type: 'SET_TOPIC_DATA', payload: res.data }))
-      .catch(err => console.log(`Error: ${err}`))
+    Promise.all([getTopics, getPhotos])
+      .then(([topics, photos]) => {
+        dispatch({ type: 'SET_TOPIC_DATA', payload: topics.data });
+        dispatch({ type: 'SET_PHOTO_DATA', payload: photos.data });
+      })
+      .catch(err => console.log(`Error: ${err}`));
   }, []);
 
   useEffect(() => {
