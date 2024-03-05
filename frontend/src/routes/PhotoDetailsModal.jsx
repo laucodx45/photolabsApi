@@ -10,6 +10,9 @@ const PhotoDetailsModal = (props) => {
   const { photoInfo, favouritePhotos } = state;
   const { imageSource, profile, location, username, photoId, similarPhotos } = photoInfo;
 
+  const similarPhotosId = similarPhotos.map((similarPhoto) => similarPhoto.id);
+  console.log(similarPhotosId);
+  
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => {dispatch({ type: 'CLOSE_MODAL'})}}>
@@ -29,7 +32,7 @@ const PhotoDetailsModal = (props) => {
         </div>
         <p className='photo-details-modal__header'>Similar Photos</p>
         <div className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos} dispatch={dispatch} state={state} favouritePhotos={favouritePhotos} />
+          <PhotoList similarPhotosId={similarPhotosId} photos={state.photoData} dispatch={dispatch} state={state} favouritePhotos={favouritePhotos} />
         </div>
       </div>
     </div>

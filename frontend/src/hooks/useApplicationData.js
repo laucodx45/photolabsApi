@@ -20,6 +20,14 @@ const initialState = {
   topicId: null
 }
 
+/*
+1. set up a state that tracks array of similar photoId
+2. set up a state that stores the photo and similar photo to display in modal
+3. everytime user click a similar photo in modal, useEffect tracks the change of that array
+4. get request to api/photos, filter the result by specific photoId and set that to 2.
+5. in photoList 
+
+*/
 const useApplicationData = () => {
 
   const reducer = (state, action) => {
