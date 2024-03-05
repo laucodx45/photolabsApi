@@ -7,9 +7,11 @@ const PhotoListItem = (props) => {
   const {imageSource, profile, username, location, favouritePhotos, photoId, dispatch, similarPhotos, state} = props;
 
   const selectPhotoAction = () => {
+    // if modal is not open
     if (!state.modalState) {
       dispatch({type: 'SELECT_PHOTO', payload: {imageSource, profile, location, username, photoId, similarPhotos}}) 
     }
+    // if modal is already open, we don't want to allow user to select photodetails
   }
   
   return (
