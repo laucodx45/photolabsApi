@@ -5,13 +5,17 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   const {photos, favouritePhotos, dispatch, state, similarPhotosId} = props;
-  
+
   let photosData = [];
-  
+
+  const photoMap = {};
+
+  photos.forEach(photo => {
+    photoMap[photo.id] = photo;
+  })
+
   similarPhotosId ? similarPhotosId.forEach(id => {
-    photos.forEach((photo) => {
-      if (photo.id === id) photosData.push(photo)
-    })
+    if (photoMap[id]) photosData.push(photoMap[id])
   }) : photosData = [...photos]
 
   
