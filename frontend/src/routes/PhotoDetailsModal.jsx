@@ -11,7 +11,6 @@ const PhotoDetailsModal = (props) => {
   const { imageSource, profile, location, username, photoId, similarPhotos } = photoInfo;
 
   const similarPhotosId = similarPhotos.map((similarPhoto) => similarPhoto.id);
-  console.log(similarPhotosId);
   
   return (
     <div className="photo-details-modal">
