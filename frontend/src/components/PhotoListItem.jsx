@@ -4,7 +4,8 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  const {imageSource, profile, username, location, favouritePhotos, photoId, dispatch, similarPhotos, state} = props;
+  const {imageSource, profile, username, location, photoId, dispatch, similarPhotos, state} = props;
+  const {favouritePhotos} = state;
 
   const selectPhotoAction = () => {
     dispatch({type: 'SELECT_PHOTO', payload: {imageSource, profile, location, username, photoId, similarPhotos}}) 

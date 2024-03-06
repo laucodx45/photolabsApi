@@ -4,23 +4,24 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  const {photos, favouritePhotos, dispatch, state, similarPhotosId} = props;
+  const {dispatch, state, similarPhotosId} = props;
+  const {photoData} = state;
 
-  let photosData = [];
+  let photos = [];
 
   const photoMap = new Map();
 
-  photos.forEach(photo => {
+  photoData.forEach(photo => {
     photoMap.set(photo.id, photo);
   })
 
   similarPhotosId ? similarPhotosId.forEach(id => {
-    if (photoMap.has(id)) photosData.push(photoMap.get(id))
-  }) : photosData = [...photos]
+    if (photoMap.has(id)) photos.push(photoMap.get(id))
+  }) : photos = [...photoData]
 
   
-  const photoItems = photosData.map((photo) => {
-    return <PhotoListItem similarPhotos ={photo.similar_photos} state={state} dispatch={dispatch} favouritePhotos={favouritePhotos} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
+  const photoItems = photos.map((photo) => {
+    return <PhotoListItem similarPhotos ={photo.similar_photos} state={state} dispatch={dispatch} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
   })
 
   return (
