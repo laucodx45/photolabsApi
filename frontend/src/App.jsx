@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <div className='App' data-theme={!state.darkMode ? '': 'dark'} >
-      <HomeRoute photos={state.photoData} topics={state.topicData} dispatch={dispatch} state={state} />
+      <HomeRoute dispatch={dispatch} state={state} />
     </div>
   );
 };

@@ -4,11 +4,24 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  const {imageSource, profile, username, location, favouritePhotos, photoId, dispatch, similarPhotos, state} = props;
+  const {imageSource, profile, username, location, photoId, dispatch, similarPhotos, state} = props;
+  const {favouritePhotos} = state;
 
   const selectPhotoAction = () => {
-    if (!state.modalState) {
-      dispatch({type: 'SELECT_PHOTO', payload: {imageSource, profile, location, username, photoId, similarPhotos}}) 
+    window.scrollTo({
+      top: 150,
+      left: 0,
+      behavior: "smooth"
+    })
+    
+    dispatch({type: 'SELECT_PHOTO', payload: {imageSource, profile, location, username, photoId, similarPhotos}}) 
+
+    if (state.modalState) {
+      const modalElement = document.querySelector('.photo-details-modal')
+      modalElement.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
     }
   }
   
