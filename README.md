@@ -4,11 +4,11 @@ React Photo Viewer is a single-page application that allows users to view photos
 
 ## Screenshots
 
-![Screenshot of homepage](./frontend/public/mainPage.png)
-![Screenshot of the modal view](./frontend/public/modalView.png)
-![Screenshot of the photos group by categories](./frontend/public/topics.png)
-![Screenshot of the photos group by categories in modal view](./frontend/public/modalSimilarPhotos.png)
-![Screenshot of the dark mode feature](./frontend/public/darkMode.png)
+![Screenshot of homepage](https://github.com/laucodx45/photolabs/raw/main/frontend/public/mainPage.png)
+![Screenshot of the modal view](https://github.com/laucodx45/photolabs/raw/main/frontend/public/modalView.png)
+![Screenshot of the photos group by categories](https://github.com/laucodx45/photolabs/raw/main/frontend/public/topics.png)
+![Screenshot of the photos group by categories in modal view](https://github.com/laucodx45/photolabs/raw/main/frontend/public/modalSimilarPhotos.png)
+![Screenshot of the dark mode feature](https://github.com/laucodx45/photolabs/raw/main/frontend/public/darkMode.png)
 
 ## Features
 
