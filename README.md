@@ -4,16 +4,27 @@ React Photo Viewer is a single-page application that allows users to view photos
 
 ## Screenshots
 
-![Screenshot of homepage](https://github.com/laucodx45/photolabs/raw/main/frontend/public/homePage.png)
-![Screenshot of the modal view](https://github.com/laucodx45/photolabs/raw/main/frontend/public/Modal.png)
-![Screenshot of the photos group by categories](https://github.com/laucodx45/photolabs/raw/main/frontend/public/photoFilter.png)
+![Screenshot of homepage](./frontend/public/mainPage.png)
+![Screenshot of the modal view](./frontend/public/modalView.png)
+![Screenshot of the photos group by categories](./frontend/public/topics.png)
+![Screenshot of the photos group by categories in modal view](./frontend/public/modalSimilarPhotos.png)
+![Screenshot of the dark mode feature](./frontend/public/darkMode.png)
 
 ## Features
 
-- View photos: Users can view a collection of photos.
-- Browse categories: Navigate to different categories using the navbar.
-- Like pictures: Users can like their favorite pictures.
-- Modal view: Clicking on a picture opens a modal to view it in detail.
+- View photos
+  - Users can view a collection of photos.
+- Browse categories 
+  - Navigate to different categories using the navbar.
+- Like pictures
+  - Users can like their favorite pictures.
+- Modal view
+  - Clicking on a picture opens up a modal which allow user to view the photo in detail and discover other similar photos.
+- Dark mode
+  - User can toggle between light and dark mode by clicking the moon button on navagation bar.
+- Automatic Scroll
+  - Clicking on a photo scrolls the view to the modal, displaying the clicked photo in detail.
+  - Clicking similar photos in modal brings the user to the top of the modal content to enhance user experience.
 
 ## Setup
 
