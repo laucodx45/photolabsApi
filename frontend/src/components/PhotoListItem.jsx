@@ -28,7 +28,7 @@ const PhotoListItem = (props) => {
   return (
       <div className="photo-list__item">
         <PhotoFavButton  dispatch={dispatch} favouritePhotos={favouritePhotos} photoId={photoId} />
-        <img src={imageSource} alt="picture" className="photo-list__image" onClick={() => {selectPhotoAction()}}/>
+        <img src={imageSource} alt="picture" className="photo-list__image" onClick={selectPhotoAction}/>
         <div className="photo-list__user-details">
           <img src={profile} alt="profile picture" className="photo-list__user-profile" />
           <div className="photo-list__user-info">
