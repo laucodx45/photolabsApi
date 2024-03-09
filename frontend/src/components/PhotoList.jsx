@@ -21,7 +21,18 @@ const PhotoList = (props) => {
 
   
   const photoItems = photos.map((photo) => {
-    return <PhotoListItem similarPhotos ={photo.similar_photos} state={state} dispatch={dispatch} key={photo.id} photoId={photo.id} imageSource={photo.urls.regular} profile={photo.user.profile} username={photo.user.username} location={photo.location}/>
+    return (
+      <PhotoListItem 
+        similarPhotos ={photo.similar_photos} 
+        state={state} dispatch={dispatch} 
+        key={photo.id} 
+        photoId={photo.id} 
+        imageSource={photo.urls.regular} 
+        profile={photo.user.profile} 
+        username={photo.user.username} 
+        location={photo.location}
+      />
+    )
   })
 
   return (
