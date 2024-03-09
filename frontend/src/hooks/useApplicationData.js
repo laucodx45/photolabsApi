@@ -12,7 +12,7 @@ export const ACTIONS = {
   SET_DARKMODE: 'SET_DARKMODE'
 }
 
-const API_URL = 'http://localhost:8001/api';
+
 
 const initialState = {
   favouritePhotos : [],
@@ -89,8 +89,8 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const getPhotos = axios.get(`${API_URL}/photos`);
-    const getTopics = axios.get(`${API_URL}/topics`);
+    const getPhotos = axios.get(`/api/photos`);
+    const getTopics = axios.get(`/api/topics`);
 
     Promise.all([getTopics, getPhotos])
       .then(([topics, photos]) => {
@@ -103,12 +103,12 @@ const useApplicationData = () => {
   useEffect(() => {
     // if topicId state is null, user is on homepage, no photofiltering required
     if (state.topicId !== null) {
-      axios.get(`${API_URL}/topics/photos/${state.topicId}`)
+      axios.get(`/api/topics/photos/${state.topicId}`)
         .then(res => dispatch( {type: 'SET_PHOTO_DATA', payload: res.data}))
         .catch(err => console.log(`Error: ${err}`))
     } else {
       // A topic has been selected, payload contains filterPhotos that contain the selected topic
-      axios.get(`${API_URL}/photos`)
+      axios.get(`/api/photos`)
       .then(res => dispatch({ type: 'SET_PHOTO_DATA', payload: res.data }))
       .catch(err => console.log(`Error: ${err}`))
     }
