@@ -28,16 +28,19 @@ const useApplicationData = () => {
 
   const reducer = (state, action) => {
     switch(action.type) {
+      // FAV_PHOTO_ADDED is used when user click fav/like button and it adds that photoId into favouritePhotos array
       case ACTIONS.FAV_PHOTO_ADDED: 
         return {
           ...state, 
           favouritePhotos: [...state.favouritePhotos, action.payload]
         }
+      // Removes photoId from favouritePhotos when user unlike the photo
       case ACTIONS.FAV_PHOTO_REMOVED:
         return {
           ...state, 
           favouritePhotos: [...state.favouritePhotos.filter(photo => photo !== action.payload)]
         }
+      // SELECT_PHOTO activate modal, it takes in the photo info as payload and props drill into PhotoDetailsModal component
       case ACTIONS.SELECT_PHOTO: 
         return {
           ...state, 
@@ -60,6 +63,7 @@ const useApplicationData = () => {
           ...state,
           topicData: action.payload
         }
+      // SELECT TOPIC is used when user click on a topic in nav bar, it sets the current topicId
       case ACTIONS.SELECT_TOPIC:
         return {
           ...state,
@@ -92,12 +96,13 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
+    // if topicId state is null, user is on homepage, no photofiltering required
     if (state.topicId !== null) {
       axios.get(`${API_URL}/topics/photos/${state.topicId}`)
         .then(res => dispatch( {type: 'SET_PHOTO_DATA', payload: res.data}))
         .catch(err => console.log(`Error: ${err}`))
-
     } else {
+      // A topic has been selected, payload contains filterPhotos that contain the selected topic
       axios.get(`${API_URL}/photos`)
       .then(res => dispatch({ type: 'SET_PHOTO_DATA', payload: res.data }))
       .catch(err => console.log(`Error: ${err}`))
