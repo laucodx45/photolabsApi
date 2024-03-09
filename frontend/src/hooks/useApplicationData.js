@@ -12,6 +12,8 @@ export const ACTIONS = {
   SET_DARKMODE: 'SET_DARKMODE'
 }
 
+const API_URL = 'http://localhost:8001/api';
+
 const initialState = {
   favouritePhotos : [],
   photoInfo : null,
@@ -78,8 +80,8 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const getPhotos = axios.get('http://localhost:8001/api/photos');
-    const getTopics = axios.get('http://localhost:8001/api/topics');
+    const getPhotos = axios.get(`${API_URL}/photos`);
+    const getTopics = axios.get(`${API_URL}/topics`);
 
     Promise.all([getTopics, getPhotos])
       .then(([topics, photos]) => {
@@ -91,12 +93,12 @@ const useApplicationData = () => {
 
   useEffect(() => {
     if (state.topicId !== null) {
-      axios.get(`http://localhost:8001/api/topics/photos/${state.topicId}`)
+      axios.get(`${API_URL}/topics/photos/${state.topicId}`)
         .then(res => dispatch( {type: 'SET_PHOTO_DATA', payload: res.data}))
         .catch(err => console.log(`Error: ${err}`))
 
     } else {
-      axios.get('http://localhost:8001/api/photos')
+      axios.get(`${API_URL}/photos`)
       .then(res => dispatch({ type: 'SET_PHOTO_DATA', payload: res.data }))
       .catch(err => console.log(`Error: ${err}`))
     }
