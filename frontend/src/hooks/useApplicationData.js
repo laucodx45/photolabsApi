@@ -28,7 +28,7 @@ const useApplicationData = () => {
 
   const reducer = (state, action) => {
     switch(action.type) {
-      // FAV_PHOTO_ADDED is used when user click fav/like button and it adds that photoId into favouritePhotos array
+      // FAV_PHOTO_ADDED is used when user click fav/like button, it adds the clicked photo's Id into favouritePhotos array
       case ACTIONS.FAV_PHOTO_ADDED: 
         return {
           ...state, 
@@ -38,9 +38,14 @@ const useApplicationData = () => {
       case ACTIONS.FAV_PHOTO_REMOVED:
         return {
           ...state, 
+          // filters out the photoId that user unliked
           favouritePhotos: [...state.favouritePhotos.filter(photo => photo !== action.payload)]
         }
-      // SELECT_PHOTO activate modal, it takes in the photo info as payload and props drill into PhotoDetailsModal component
+      /* 
+      SELECT_PHOTO set modalState to true
+      The payload contains photodata that PhotoDetailsModal component needs
+      photoInfo state contains data that the modal requires
+      */
       case ACTIONS.SELECT_PHOTO: 
         return {
           ...state, 
@@ -63,7 +68,7 @@ const useApplicationData = () => {
           ...state,
           topicData: action.payload
         }
-      // SELECT TOPIC is used when user click on a topic in nav bar, it sets the current topicId
+      // SELECT TOPIC is used when user click on a topic in nav bar. It sets the current topicId
       case ACTIONS.SELECT_TOPIC:
         return {
           ...state,
