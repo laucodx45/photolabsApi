@@ -12,13 +12,15 @@ const TopNavigation = (props) => {
   const isFavPhotoExist = favouritePhotos.length !== 0 ? favouritePhotos : false;
 
   const toogleDarkMode = () => {
-    dispatch({type:'SET_DARKMODE'})
+    dispatch({type:'SET_DARKMODE'});
   }
+
   return (
     <div className="top-nav-bar">
+      {/* onClick top-nav-bar, it resets the topic to null, which display unfiltered photos */}
       <span className="top-nav-bar__logo" onClick={ () => dispatch({type: 'SELECT_TOPIC', payload: null})}>PhotoLabs</span>
       <TopicList dispatch={dispatch} state={state} />
-      <FontAwesomeIcon className="moon" icon={faMoon} onClick={() => {toogleDarkMode()}}/>
+      <FontAwesomeIcon className="moon" icon={faMoon} onClick={toogleDarkMode}/>
       <FavBadge isFavPhotoExist={isFavPhotoExist}/>
     </div>
   )
