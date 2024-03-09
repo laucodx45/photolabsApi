@@ -7,7 +7,7 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
   const {dispatch, state} = props;
-
+  
   return (
     <div className="home-route">
       <TopNavigation dispatch={dispatch} state={state} />
