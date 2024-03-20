@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import closeSymbolDark from '../assets/closeSymbolDark.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
+import { applicationContext } from 'hooks/applicationContext';
 
-const PhotoDetailsModal = (props) => {
-  const {state, dispatch} = props;
+const PhotoDetailsModal = () => {
+  const {state, dispatch} = useContext(applicationContext)
   const {photoInfo, favouritePhotos} = state;
   const {imageSource, profile, location, username, photoId, similarPhotos} = photoInfo;
 
@@ -33,7 +34,7 @@ const PhotoDetailsModal = (props) => {
         </div>
         <p className='photo-details-modal__header'>Similar Photos</p>
         <div className="photo-details-modal__images">
-          <PhotoList similarPhotosId={similarPhotosId} dispatch={dispatch} state={state} />
+          <PhotoList similarPhotosId={similarPhotosId} />
         </div>
       </div>
     </div>

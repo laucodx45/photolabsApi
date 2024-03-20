@@ -5,9 +5,11 @@ import FavBadge from 'components/FavBadge';
 import '../styles/TopNavigationBar.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { applicationContext } from 'hooks/applicationContext';
+import { useContext } from 'react';
 
-const TopNavigation = (props) => {
-  const {dispatch, state} = props;
+const TopNavigation = () => {
+  const {dispatch, state} = useContext(applicationContext);
   const {favouritePhotos} = state;
   const isFavPhotoExist = favouritePhotos.length !== 0 ? favouritePhotos : false;
 

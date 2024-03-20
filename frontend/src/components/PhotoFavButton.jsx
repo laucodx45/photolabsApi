@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
+import { applicationContext } from 'hooks/applicationContext';
 
 function PhotoFavButton(props) {
-  const {favouritePhotos, dispatch, photoId} = props;
+  const {photoId} = props;
+  const {dispatch, state} = useContext(applicationContext);
+  const favouritePhotos = state.favouritePhotos;
 
   const isSelected = favouritePhotos.includes(photoId) ? true : false;
 

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
+import { applicationContext } from "hooks/applicationContext";
+
 
 const PhotoListItem = (props) => {
-  const {imageSource, profile, username, location, photoId, dispatch, similarPhotos, state} = props;
-  const {favouritePhotos} = state;
+  const {imageSource, profile, username, location, photoId, similarPhotos} = props;
+  const {state, dispatch} = useContext(applicationContext);
 
   const selectPhotoAction = () => {
     window.scrollTo({
@@ -27,7 +29,7 @@ const PhotoListItem = (props) => {
   
   return (
       <div className="photo-list__item">
-        <PhotoFavButton  dispatch={dispatch} favouritePhotos={favouritePhotos} photoId={photoId} />
+        <PhotoFavButton photoId={photoId} />
         <img src={imageSource} alt="picture" className="photo-list__image" onClick={selectPhotoAction}/>
         <div className="photo-list__user-details">
           <img src={profile} alt="profile picture" className="photo-list__user-profile" />
