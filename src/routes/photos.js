@@ -5,7 +5,7 @@ module.exports = db => {
     const protocol = request.protocol;
     const host = request.hostname;
     const port = process.env.PORT || 8001;
-    const serverUrl = `${protocol}://${host}:${port}`;
+    const serverUrl = `https://photolabsapi.onrender.com`;
 
     db.query(`
       SELECT 
