@@ -12,7 +12,9 @@ const pool = new Pool({
   user: PGUSER,
   password: PGPASSWORD,
   port: PGPORT,
-  ssl: false,
+  ssl: {
+    rejectUnauthorized: false
+  },
   application_name: ENDPOINT_ID, 
 });
 
